@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Web Form</title>
+    <script>
+        function showData() {
+            var fname = document.getElementById('fname').value;
+            var lname = document.getElementById('lname').value;
+            var job = document.getElementById('job').value;
+            var education = document.querySelector('input[name="education"]:checked').value;
+            var sex = document.querySelector('input[name="sex"]:checked').value;
+            var experience = document.getElementById('experience').value;
+            var date = document.getElementById('date').value;
+
+            alert('First Name: ' + fname +
+                  '\nLast Name: ' + lname +
+                  '\nJob Title: ' + job +
+                  '\nEducation: ' + education +
+                  '\nSex: ' + sex +
+                  '\nExperience: ' + experience +
+                  '\nDate: ' + date);
+        }
+    </script>
+</head>
+<body>
+<h2>Complete Web Form</h2>
+<form onsubmit="event.preventDefault(); showData();">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname"><br>
+    <label for="job">Job title:</label><br>
+    <input type="text" id="job" name="job"><br>
+    <p>Highest level of education:</p>
+    <input type="radio" id="highschool" name="education" value="High School">
+    <label for="highschool">High School</label><br>
+    <input type="radio" id="graduate" name="education" value="Graduate">
+    <label for="graduate">Graduate</label><br>
+    <p>Sex:</p>
+    <input type="radio" id="male" name="sex" value="Male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="sex" value="Female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" name="sex" value="Prefer not to say">
+    <label for="other">Prefer not to say</label><br>
+    <label for="experience">Years of experience:</label><br>
+    <select id="experience" name="experience">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br>
+    <label for="date">Date:</label><br>
+    <input type="date" id="date" name="date"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
