@@ -42,15 +42,15 @@ public class AutomatizationSauceDemo {
             // Encuentra los elementos de usuario y contraseña e ingresa los valores
             Thread.sleep(900);
             WebElement usernameField = driver.findElement(By.id("user-name"));
-            Thread.sleep(900);
             WebElement passwordField = driver.findElement(By.id("password"));
-            Thread.sleep(900);
             WebElement loginButton = driver.findElement(By.id("login-button"));
-            Thread.sleep(900);
 
             usernameField.sendKeys(username);
+            Thread.sleep(900);
             passwordField.sendKeys(password);
+            Thread.sleep(900);
             loginButton.click();
+            Thread.sleep(900);
 
             // Verifica que el inicio de sesión fue exitoso
             WebElement productsTitle = driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div"));
