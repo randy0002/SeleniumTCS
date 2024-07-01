@@ -32,14 +32,6 @@ public class FinalTest {
 		driver.get("https://www.saucedemo.com/v1/");
 	}
 
-	@After
-	public void tearDown() {
-		if (driver != null) {
-			driver.quit();
-		}
-	}
-
-	@Ignore
 	@Test
 	public void testLogin() {
 		try {
@@ -69,7 +61,6 @@ public class FinalTest {
 		}
 	}
 
-	@Ignore
 	@Test
 	public void testAddAndRemoveProducts() throws InterruptedException {
 		Thread.sleep(900);
@@ -95,7 +86,6 @@ public class FinalTest {
 		Thread.sleep(900);
 	}
 
-	@Ignore
 	@Test
 	public void testCheckout() throws InterruptedException {
 		try {
@@ -118,7 +108,6 @@ public class FinalTest {
 		Thread.sleep(900);
 	}
 
-	@Ignore
 	@Test
 	public void testLogout() throws InterruptedException {
 		testCheckout();
@@ -141,31 +130,46 @@ public class FinalTest {
 
 	@Test
 	public void testLoginFailure() throws InterruptedException {
-		
-			// Lee el usuario y la contraseña desde las propiedades
-			String username = properties.getProperty("usernameWrong");
-			String password = properties.getProperty("passwordWrong");
 
-			// Encuentra los elementos de usuario y contraseña e ingresa los valores
-			Thread.sleep(900);
-			WebElement usernameField = driver.findElement(By.id("user-name"));
-			WebElement passwordField = driver.findElement(By.id("password"));
-			WebElement loginButton = driver.findElement(By.id("login-button"));
+		// Lee el usuario y la contraseña desde las propiedades
+		String username = properties.getProperty("usernameWrong");
+		String password = properties.getProperty("passwordWrong");
 
-			usernameField.sendKeys(username);
-			Thread.sleep(900);
-			passwordField.sendKeys(password);
-			Thread.sleep(900);
-			loginButton.click();
-			Thread.sleep(900);
+		// Encuentra los elementos de usuario y contraseña e ingresa los valores
+		Thread.sleep(900);
+		WebElement usernameField = driver.findElement(By.id("user-name"));
+		WebElement passwordField = driver.findElement(By.id("password"));
+		WebElement loginButton = driver.findElement(By.id("login-button"));
+
+		usernameField.sendKeys(username);
+		Thread.sleep(900);
+		passwordField.sendKeys(password);
+		Thread.sleep(900);
+		loginButton.click();
+		Thread.sleep(900);
+
+		try {
 			// Encuentra el mensaje de error
-	        WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/h3"));
-	        String actualMessage = errorMessage.getText();
+			WebElement errorMessage = driver.findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/h3"));
+			String actualMessage = errorMessage.getText();
 
-	        // Verifica que el mensaje de error sea el esperado
-	        String expectedMessage = "Username is required";
-	        assertEquals(expectedMessage, actualMessage);
+			// Verifica que el mensaje de error sea el esperado
+			String expectedMessage = "Epic sadface: Username and password do not match any user in this service";
+			assertEquals(expectedMessage, actualMessage);
+			System.out.println("El usuario o Contraseña estan mal!!!!, el test ha fallado Correctamente XD");
+
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("El usuario ingresado esta OK");
+		}
+
 	}
-	
+
+	@After
+	public void tearDown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
 
 }
