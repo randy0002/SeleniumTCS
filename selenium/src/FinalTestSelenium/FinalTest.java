@@ -46,11 +46,8 @@ public class FinalTest {
 			WebElement loginButton = driver.findElement(By.id("login-button"));
 
 			usernameField.sendKeys(username);
-			Thread.sleep(900);
 			passwordField.sendKeys(password);
-			Thread.sleep(900);
 			loginButton.click();
-			Thread.sleep(900);
 			// Verifica que el inicio de sesión fue exitoso
 			assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed());
 
@@ -63,27 +60,16 @@ public class FinalTest {
 
 	@Test
 	public void testAddAndRemoveProducts() throws InterruptedException {
-		Thread.sleep(900);
 		testLogin();
-		Thread.sleep(1900);
 		driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button")).click();
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[2]/div[3]/button")).click();
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[3]/div[3]/button")).click();
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[4]/div[3]/button")).click();
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"inventory_container\"]/div/div[3]/div[3]/button")).click();
-		Thread.sleep(900);
 		driver.findElement(By.className("shopping_cart_link")).click();
-		Thread.sleep(900);
 		assertTrue(driver.findElement(By.id("item_4_title_link")).isDisplayed());
-		Thread.sleep(900);
 		assertTrue(driver.findElement(By.id("item_0_title_link")).isDisplayed());
-		Thread.sleep(900);
 		assertTrue(driver.findElement(By.id("item_5_title_link")).isDisplayed());
-		Thread.sleep(900);
 	}
 
 	@Test
@@ -98,25 +84,19 @@ public class FinalTest {
 		driver.findElement(By.id("first-name")).sendKeys("Randy");
 		driver.findElement(By.id("last-name")).sendKeys("chilpa");
 		driver.findElement(By.id("postal-code")).sendKeys("55603");
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"checkout_info_container\"]/div/form/div[2]/input")).click();
-		Thread.sleep(900);
 		driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[8]/a[2]")).click();
-		Thread.sleep(900);
 		WebElement thankYouMessage = driver.findElement(By.className("complete-header"));
 		assertEquals("THANK YOU FOR YOUR ORDER", thankYouMessage.getText());
-		Thread.sleep(900);
 	}
 
 	@Test
 	public void testLogout() throws InterruptedException {
 		testCheckout();
-		Thread.sleep(1900);
 		try {
 			WebElement menuButton = driver
 					.findElement(By.xpath("//*[@id=\"menu_button_container\"]/div/div[3]/div/button"));
 			if (menuButton != null) {
-				Thread.sleep(1900);
 				menuButton.click();
 			} else {
 				Thread.sleep(1900);
@@ -136,15 +116,12 @@ public class FinalTest {
 		String password = properties.getProperty("passwordWrong");
 
 		// Encuentra los elementos de usuario y contraseña e ingresa los valores
-		Thread.sleep(900);
 		WebElement usernameField = driver.findElement(By.id("user-name"));
 		WebElement passwordField = driver.findElement(By.id("password"));
 		WebElement loginButton = driver.findElement(By.id("login-button"));
 
 		usernameField.sendKeys(username);
-		Thread.sleep(900);
 		passwordField.sendKeys(password);
-		Thread.sleep(900);
 		loginButton.click();
 		Thread.sleep(900);
 
